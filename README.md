@@ -28,7 +28,7 @@ set apiRoot, privateToken and projectName
     {
         return [
             'behaviors' => [
-                'class' => ErrorBehavior::className(),
+                'class' => 'vendor.zacksleo.yii-gitlab-error-behavior',,
                 'apiRoot' => 'http://gitlab.com/api/v3/',
                 'privateToken' => 'privateToken',
                 'projectName' => 'demo/project'
