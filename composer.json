@@ -14,8 +14,8 @@
     "yiisoft/yii": "^1.1"
   },
   "autoload": {
-    "psr-4": {
-      "zacksleo\\yii\\gitlab\\behaviors\\": "src"
-    }
+    "classmap": [
+      "src/ErrorBehavior",
+    ]
   }
 }

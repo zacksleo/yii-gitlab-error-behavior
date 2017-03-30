@@ -26,16 +26,30 @@ set apiRoot, privateToken and projectName
 ```
     public function behaviors()
     {
-        return [
-            'behaviors' => [
-                'class' => 'vendor.zacksleo.yii-gitlab-error-behavior',,
+        return array(
+            'error' => array(
+                'class' => 'webroot.vendor.zacksleo.yii-gitlab-error-behavior.src.ErrorBehavior',
                 'apiRoot' => 'http://gitlab.com/api/v3/',
-                'privateToken' => 'privateToken',
-                'projectName' => 'demo/project'
-            ]
-        ];
-    }
+                'privateToken' => '{privateToken}',
+                'projectName' => '{demo/project}'
+            )
+        );
+    }   
     
+    public function onBeforeAction($event)
+    {
+        $this->raiseEvent('onBeforeAction', $event);
+    }    
+
+
+    public function actionError()
+    {
+        if ($error = Yii::app()->errorHandler->error) {
+            $this->onBeforeAction(new CEvent($this));            
+            $this->renderPartial('error', $error);            
+        }
+    }
+
 ```
 
 ## Screenshoot

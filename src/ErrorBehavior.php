@@ -1,10 +1,7 @@
 <?php
 
-namespace zacksleo\yii\gitlab\behaviors;
-
 /**
  * Class ErrorBehavior
- * @package zacksleo\yii2\gitlab\behaviors\ErrorBehavior
  * @property string $apiRoot
  * @property string $privateToken
  * @property string $projectName
@@ -18,7 +15,7 @@ class ErrorBehavior extends \CBehavior
     public function events()
     {
         return [
-            'onError' => 'onError'
+            'onBeforeAction' => 'beforeAction'
         ];
     }
 
@@ -26,7 +23,7 @@ class ErrorBehavior extends \CBehavior
      * @param $event
      * @return bool|mixed
      */
-    public function onError($event)
+    public function beforeAction($event)
     {
         $error = \Yii::app()->errorHandler->error;
         if (!in_array($error['code'], ['404', '400'])) {
@@ -51,7 +48,7 @@ class ErrorBehavior extends \CBehavior
                 $description .= '<blockquote>X-Debug-Tag:' . time() . '</blockquote>';
             }
             $content = htmlspecialchars(
-                \VarDumper::dumpAsString($_REQUEST),
+                \CVarDumper::dumpAsString($_REQUEST),
                 ENT_QUOTES | ENT_SUBSTITUTE,
                 'UTF-8',
                 true
