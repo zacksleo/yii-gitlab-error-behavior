@@ -15,7 +15,7 @@
   },
   "autoload": {
     "classmap": [
-      "src/ErrorBehavior"
+      "src/ErrorBehavior.php"
     ]
   }
 }
