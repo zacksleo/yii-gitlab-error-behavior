@@ -71,6 +71,7 @@ class ErrorBehavior extends \CBehavior
             curl_exec($ch);
             curl_close($ch);
         }
+        return true;
     }
 
     /**
