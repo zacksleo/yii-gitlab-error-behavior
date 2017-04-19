@@ -26,7 +26,7 @@ class ErrorBehavior extends \CBehavior
     public function beforeAction($event)
     {
         $error = \Yii::app()->errorHandler->error;
-        if (!in_array($error['code'], ['404', '400'])) {
+        if ($error > 499 && $error < 600) {
             $projectId = $this->getProjectId();
             if (empty($projectId)) {
                 return true;
