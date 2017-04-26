@@ -10,6 +10,12 @@ gitlab error behavior for yii1
 
 ## Usage
 
+### Install By Composer
+
+```
+  composer require zacksleo/yii-gitlab-error-behavior --prefer-dist 
+  
+```
 
 ### set component
 
