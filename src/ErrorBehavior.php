@@ -41,7 +41,7 @@ class ErrorBehavior extends \CBehavior
             if (!empty(\Yii::app()->request->getUserHostAddress())) {
                 $description .= '<blockquote>IP: ' . \Yii::app()->request->getUserHostAddress() . '</blockquote>';
             }
-            $description .= '<blockquote>URL: ' . \Yii::app()->request->url.'</blockquote>';
+            $description .= '<blockquote>URL: ' .\Yii::app()->request->hostInfo . \Yii::app()->request->url.'</blockquote>';
             if (!empty(\Yii::app()->request->getUrlReferrer())) {
                 $description .= '<blockquote>Refer:' . \Yii::app()->request->getUrlReferrer() . '</blockquote>';
             }
